@@ -1,0 +1,55 @@
+
+
+<section class="my-post">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-sm-12"> 
+         <h1 class="post-header text-center"> My posts </h1>
+          <a href="<%= new_post_path %>" class="post-btn-create" >  + Create Post </a>
+          <br>
+          <br>
+         
+            <table class="table table-responsive">
+                <thead class="table-dark">
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Content</th>
+                    <th scope="col">Author</th>
+                     <th scope="col">Image</th>
+                    <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                <% @posts.each do |post| %>
+                    <tr>
+                    <th scope="row"><%= post.id %></th>
+                    <td><%= post.title %></td>
+                    <td><%= post.content.first(100) %>...</td>
+                    <td><%= post.author %></td>
+                    <td><%= post.image %></td>
+                    <td>
+                    <a href="<%= post_path(post) %>" class="post-btn-view"> view </a>
+                    <a href="<%= edit_post_path(post) %>" class="post-btn-edit"> Edit </a>
+                    <%= 
+
+                    link_to "Delete", post_path(post),
+                    data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?" }  ,
+                    class: "post-btn-delete" 
+
+                    %>
+                    </td>
+
+                    </tr>
+                <% end %>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+</section>

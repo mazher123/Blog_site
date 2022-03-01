@@ -1,0 +1,21 @@
+<section class="post-form">
+ <div class="container">
+    <div class="row justify-content-md-center">
+
+    <h1 class="post-header text-center"> Create Post </h1>
+
+
+
+
+    <div class ="col-sm-8 ">
+        <%= simple_form_for @post,  :method => :post do |f| %>
+        <%= f.input :title  %>
+        <%= f.input :content %>
+        <%= f.input :author  %>
+        <%= f.button :submit, class: 'post-btn-create'  %>
+    
+        <% end %>
+    </div>
+     </div>
+ </div>
+</section>

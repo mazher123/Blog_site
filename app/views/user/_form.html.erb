@@ -1,0 +1,7 @@
+     <%= simple_form_for @user, :url => user_index_path, :method => :post do |f| %>
+        <%= f.input :name  %>
+        <%= f.input :phone %>
+        <%= f.input :email %>
+        <%= f.input :password %>
+        <%= f.button :submit, class: 'post-btn-create'  %>
+        <% end %>

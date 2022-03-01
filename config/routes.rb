@@ -6,9 +6,18 @@ Rails.application.routes.draw do
 
   root  "user#home"
 
-  resources :post 
-  
-  resources :user
+  resources :posts 
+
+  get '/my-post', to: "posts#my_post"
+ 
+
+  get "/signup", to: "user#new"
+  get "/login", to: "user#login"
+  post "/login", to: "user#loginsubmit"
+  delete 'logout', to: 'user#logout'
+
+
+  resources :user , except: [:new]
   resources :category
 
 end
