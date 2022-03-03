@@ -11,3 +11,5 @@ import "controllers"
 //= require i18n/translations
 
 
+import "trix"
+import "@rails/actiontext"

@@ -1,6 +1,6 @@
 
 
-<section class="my-post">
+<section class="my-post" >
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-sm-12"> 
@@ -12,12 +12,12 @@
             <table class="table table-responsive">
                 <thead class="table-dark">
                     <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Content</th>
-                    <th scope="col">Author</th>
-                     <th scope="col">Image</th>
-                    <th scope="col">Action</th>
+                    <th class="col">#</th>
+                    <th class="col">Title</th>
+                    <th class="col-4">Content</th>
+                    <th class="col">Author</th>
+                     <th class="col">Image</th>
+                    <th class="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,9 +26,9 @@
                     <tr>
                     <th scope="row"><%= post.id %></th>
                     <td><%= post.title %></td>
-                    <td><%= post.content.first(100) %>...</td>
+                    <td><%= post.content.first(100).html_safe %>...</td>
                     <td><%= post.author %></td>
-                    <td><%= post.image %></td>
+                    <td><%= image_tag(post.image , class: "post-img-2") %></td>
                     <td>
                     <a href="<%= post_path(post) %>" class="post-btn-view"> view </a>
                     <a href="<%= edit_post_path(post) %>" class="post-btn-edit"> Edit </a>

@@ -4,20 +4,17 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  root  "user#home"
+  root  "users#home"
 
   resources :posts 
 
   get '/my-post', to: "posts#my_post"
- 
-
-  get "/signup", to: "user#new"
-  get "/login", to: "user#login"
-  post "/login", to: "user#loginsubmit"
-  delete 'logout', to: 'user#logout'
-
-
-  resources :user , except: [:new]
-  resources :category
+  get "/signup", to: "users#new" , as: 'signup'
+  post "/signup", to: "users#create" , as: 'user_create'
+  get "/login", to: "users#login" ,  as: 'login'
+  post "/login", to: "users#loginsubmit" ,as: 'login_submit'
+  get '/logout', to: 'users#logout' ,as: 'logout'
+  # resources :users , except: [:new]
+  resources :categories
 
 end

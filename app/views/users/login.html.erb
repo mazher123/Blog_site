@@ -1,0 +1,25 @@
+<section class="post-form">
+ <div class="container">
+    <div class="row justify-content-md-center">
+    <h1 class="post-header text-center"> Login </h1>
+    <div class ="col-sm-8 ">
+
+       <% flash.each do |type, msg| %>
+     
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <%= msg %>
+            </div>
+
+
+        <% end %>
+
+        <%= simple_form_for :users ,  :url => login_submit_path , :method => :post do |f| %>
+  
+        <%= f.input :email %>
+        <%= f.input :password  %> 
+        <%= f.button :submit, "Log in", class: 'post-btn-create'  %>
+        <% end %>
+    </div>
+     </div>
+ </div>
+</section>

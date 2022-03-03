@@ -4,14 +4,17 @@
 
     <h1 class="post-header text-center"> Create Post </h1>
 
-
-
-
     <div class ="col-sm-8 ">
         <%= simple_form_for @post,  :method => :post do |f| %>
         <%= f.input :title  %>
-        <%= f.input :content %>
+        <%= f.input :content ,as: :rich_text_area %>
         <%= f.input :author  %>
+        <%= f.input :category_id,
+            as: :select,
+            collection: Category.all,
+            prompt: 'Select Category',
+            required: true %>
+         <%= f.input :image %>
         <%= f.button :submit, class: 'post-btn-create'  %>
     
         <% end %>

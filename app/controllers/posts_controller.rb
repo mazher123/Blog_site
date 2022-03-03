@@ -1,16 +1,17 @@
 class PostsController < ApplicationController
-
+    before_action :require_user, except: [:show, :index ]
     def index 
         @posts = Post.all
     end
 
     def new 
         @post = Post.new
+        
     end
 
     def create
         @post = Post.new(post_params) 
-        @post.user_id = 1  
+        @post.user_id = session[:user_id] 
         if @post.save
             redirect_to posts_path
         else
@@ -25,7 +26,7 @@ class PostsController < ApplicationController
     end
 
     def my_post
-        @posts = Post.order(:id)
+        @posts = Post.joins(:category).where(user_id: session[:user_id] ).order(:id)
     end
 
     def edit
@@ -54,7 +55,7 @@ class PostsController < ApplicationController
 
     private
     def post_params
-        params.require(:post).permit(:id ,:title,:content, :author)
+        params.require(:post).permit(:id ,:title,:content, :author , :image , :category_id)
     end
 
 end

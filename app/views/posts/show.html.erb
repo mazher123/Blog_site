@@ -1,10 +1,10 @@
 <section class="show-post">
 <div class="container">
     <div class="row">
-          <div class="col-md-12 post-image"> <%= @post.image %> </div>
+          <div class="col-md-12 post-image"> <%= image_tag(@post.image , class: "post-img-3") %></div>
           <div class="col-md-12 post-body">
              <h1> <%= @post.title %> </h1>
-             <p> <%= @post.content %> </p>
+             <p> <%= @post.content.html_safe %> </p>
           </div>
     </div>
 </div>

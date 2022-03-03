@@ -1,0 +1,59 @@
+
+
+<section class="all-category" >
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-sm-12"> 
+         <h1 class="post-header text-center"> All category </h1>
+          <a href="<%= new_category_path %>" class="post-btn-create" >  + Create Category </a>
+          <br>
+          <br>
+            <table class="table table-responsive">
+                <thead class="table-dark">
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col"> Is active</th>
+       
+                    <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                <% @categories.each do |category| %>
+                    <tr>
+                    <th scope="row"><%= category.id %></th>
+                    <td><%= category.name %></td>
+                    <td>
+                    
+                    <% if category.is_active == "1" %>
+                 <span class="badge bg-success">Active</span>
+                    <% else %>
+                 <span class="badge bg-warning text-dark">Inactive</span>
+                    <% end %>
+
+                    </td>
+                   
+                    <td>
+                    <a href="<%= edit_category_path(category) %>" class="post-btn-edit"> Edit </a>
+                    <%= 
+
+                    link_to "Delete", category_path(category),
+                    data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?" }  ,
+                    class: "post-btn-delete" 
+
+                    %>
+                    </td>
+
+                    </tr>
+                <% end %>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+</section>

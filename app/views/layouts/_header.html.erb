@@ -13,6 +13,8 @@
         <li class="nav-item">
           <a class="nav-link" href="<%= posts_path %>">Posts</a>
         </li>
+
+      <% if logged_in? %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             My Posts
@@ -22,15 +24,22 @@
             <li><a class="dropdown-item" href=" <%= my_post_path %> "> my post</a></li>
           </ul>
         </li>
+
+  
+      
             <li class="nav-item">
+          <a class="nav-link" href="<%= logout_path %>">logout</a>
+        </li>
+         
+         <% else %>
+              <li class="nav-item">
           <a class="nav-link" href="<%= login_path %>">Login</a>
         </li>
             <li class="nav-item">
           <a class="nav-link" href="<%= signup_path %>">Sign up</a>
         </li>
-            <li class="nav-item">
-          <a class="nav-link" href="<%= logout_path %>">logout</a>
-        </li>
+
+        <% end %>
   
       </ul>
       <form class="d-flex">
