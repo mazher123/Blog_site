@@ -16,6 +16,7 @@
                     <th class="col">Title</th>
                     <th class="col-4">Content</th>
                     <th class="col">Author</th>
+                       <th class="col">Category</th>
                      <th class="col">Image</th>
                     <th class="col">Action</th>
                     </tr>
@@ -28,6 +29,7 @@
                     <td><%= post.title %></td>
                     <td><%= post.content.first(100).html_safe %>...</td>
                     <td><%= post.author %></td>
+                     <td><%= post.category.name %></td>
                     <td><%= image_tag(post.image , class: "post-img-2") %></td>
                     <td>
                     <a href="<%= post_path(post) %>" class="post-btn-view"> view </a>

@@ -98,6 +98,11 @@
      min-height: 650px;
  }
 
+ .edit-form{
+  margin-top: 100px;
+  min-height: 650px;
+ }
+
  .all-post{
      padding-top:100px;
      padding-bottom: 30px;
