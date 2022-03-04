@@ -488,13 +488,7 @@ ul {
   width: 120px;
 }
 
-@media screen and (max-width: 600px) {
-  .post-img {
-    width: 320px;
-    height: 320px;
-  
-  }
-}
+
 
 
 

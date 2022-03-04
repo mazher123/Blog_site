@@ -22,7 +22,7 @@
                 <div class="post-image"> <%= image_tag(post.image , class: "post-img") %></div>
                 <div class="post-title"> <h1> <%= post.title %> </h1> </div>
                 <div class="post-content">
-                    <%= post.content.first(400).html_safe  %> .... 
+                    <%= truncate(post.content.html_safe,:length => 400 ) %> .... 
                     <span> <a href="<%= post_path(post) %>">Read more</a>
                     </span>
                 </div >
