@@ -1,7 +1,8 @@
 <section class="nav-section">
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark  bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="<%= root_path %>">Blog Site</a>
+    <a class="navbar-brand" href="<%= root_path %>"> 
+    <img src="<%= image_path('reliblog.png') %>"   height="200px" width="200px" alt="Reliblog"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -20,9 +21,17 @@
             Categories
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+          <% if !current_user.blank? %>
+           <% if current_user.id == 1 %>
+          <li><a class="dropdown-item" href="<%= categories_path %>">  <b>Create Category</b> </a></li>
+           <% end %>
+
+            <% end %>
           <% Category.all.each do |category| %>
               <li><a class="dropdown-item" href="<%= find_by_cat_path(category.id) %>">  <%= category.name %></a></li>
           <% end %>
+         
             
           </ul>
         </li>
@@ -33,8 +42,8 @@
             My Posts
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="<%= new_post_path %>"> Create Post</a></li>
-            <li><a class="dropdown-item" href=" <%= my_post_path %> "> my post</a></li>
+            <li><a class="dropdown-item" href="<%= new_post_path %>"> <b> Create Post </b></a></li>
+            <li><a class="dropdown-item" href=" <%= my_post_path %> "> My Post</a></li>
           </ul>
         </li>
 

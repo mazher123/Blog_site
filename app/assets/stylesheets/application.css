@@ -46,10 +46,18 @@
      background-color: #1b063a !important
  }
 
- .footer {
-    
- }
- 
+ .navbar-brand
+{
+    position: relative;
+    bottom: 100px;
+    width: 170px;
+    height: 15px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
  .border {
     border: 1px solid #1313135e!important;
 }
@@ -480,7 +488,13 @@ ul {
   width: 120px;
 }
 
-
+@media screen and (max-width: 600px) {
+  .post-img {
+    width: 320px;
+    height: 320px;
+  
+  }
+}
 
 
 

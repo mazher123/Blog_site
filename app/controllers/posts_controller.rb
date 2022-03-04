@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
     before_action :require_user, except: [:show, :index ]
-    
+
     def index 
         @posts = Post.paginate(page: params[:page], per_page: 3)
     end
@@ -26,7 +26,13 @@ class PostsController < ApplicationController
     end
 
     def my_post
+
+        if session[:user_id] == 1 # user no 1 is admin
+        @posts = Post.joins(:category).order(:id).paginate(page: params[:page], per_page: 10)
+        else
         @posts = Post.joins(:category).where(user_id: session[:user_id] ).order(:id).paginate(page: params[:page], per_page: 10)
+        end
+
     end
 
     def edit

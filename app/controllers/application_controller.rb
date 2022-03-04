@@ -16,4 +16,10 @@ class ApplicationController < ActionController::Base
         redirect_to login_path
       end
     end
+
+    def require_admin
+      if !(logged_in? && current_user.id == 1)
+        redirect_to login_path
+      end
+    end
 end

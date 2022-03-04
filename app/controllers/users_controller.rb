@@ -10,8 +10,8 @@ class UsersController < ApplicationController
 
     def create
         @users = User.new(user_params)
-        @users.role = 1
-        # role 1 for normal user
+        @users.role = 2
+        # role 2 for normal user
         if @users.save
         session[:user_id] = @users.id
         redirect_to my_post_path
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:id ,:name, :email, :password, :phone)
+        params.require(:user).permit(:id ,:name, :email, :password, :phone ,:password_confirmation)
       end
 
 end
