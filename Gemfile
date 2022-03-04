@@ -53,6 +53,8 @@ gem "font-awesome-rails"
 
 gem 'jquery-rails'
 
+
+
 gem 'will_paginate', '~> 3.3'
 
 
