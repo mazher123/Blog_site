@@ -3,6 +3,7 @@
         <%= render "layouts/slider"%>
 </section>
 
+
 <section class="posts">
 
 <div class="container">
@@ -11,9 +12,9 @@
             <div class="col-sm-6 post-slogan"> 
                 <h1> Our Blog Posts</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum repellat quaerat voluptatibus placeat nam</p>
-            
             </div>
     </div>
+    <% if @posts %>
     <div class="row g-2 ">
     <% @posts.each do | post |  %>
         <div class="col-md-4 col-sm-6">
@@ -35,6 +36,20 @@
         </div>
     <% end %>
     </div>
+
+    <div class="row justify-content-center">
+       <div class="col view-btn "> 
+            <a href="<%= posts_path %>" class="post-btn-view" > View All </a>
+        </div>
+    </div>
+
+    <% else %>
+
+        <div class="row g-2 ">
+         <div class="col-sm-8 post-slogan"> <h1> No Posts found </h1>
+        </div>
+
+    <% end %>
 </div>
 
 </section>

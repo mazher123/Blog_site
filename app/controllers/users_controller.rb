@@ -9,7 +9,6 @@ class UsersController < ApplicationController
     end
 
     def create
-  
         @users = User.new(user_params)
         @users.role = 1
         # role 1 for normal user
@@ -27,7 +26,6 @@ class UsersController < ApplicationController
 
     def loginsubmit
         @users = User.find_by(email: params[:users][:email].downcase)
-
         if @users && @users.authenticate(params[:users][:password])
           session[:user_id] = @users.id
           flash[:notice] = "Logged in successfully"

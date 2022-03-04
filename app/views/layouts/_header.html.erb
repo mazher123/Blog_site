@@ -14,6 +14,19 @@
           <a class="nav-link" href="<%= posts_path %>">Posts</a>
         </li>
 
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Categories
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <% Category.all.each do |category| %>
+              <li><a class="dropdown-item" href="<%= find_by_cat_path(category.id) %>">  <%= category.name %></a></li>
+          <% end %>
+            
+          </ul>
+        </li>
+
       <% if logged_in? %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -25,8 +38,6 @@
           </ul>
         </li>
 
-  
-      
             <li class="nav-item">
           <a class="nav-link" href="<%= logout_path %>">logout</a>
         </li>
@@ -42,10 +53,12 @@
         <% end %>
   
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <%= simple_form_for :search, url: search_path, method: "GET", html: { class: 'd-flex' } do |f| %>
+        <%= f.input :name, input_html: {value: ""} ,class: "form-control me-2" %>   
+        <%= f.submit "Search", class: "btn btn-outline-success" %>
+      <% end %>
+
+      
     </div>
   </div>
 </nav>

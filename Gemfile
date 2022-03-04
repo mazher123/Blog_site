@@ -53,6 +53,9 @@ gem "font-awesome-rails"
 
 gem 'jquery-rails'
 
+gem 'will_paginate', '~> 3.3'
+
+
 gem "image_processing", ">= 1.2"
 
 # Use Sass to process CSS

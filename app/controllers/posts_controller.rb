@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
     before_action :require_user, except: [:show, :index ]
+    
     def index 
-        @posts = Post.all
+        @posts = Post.paginate(page: params[:page], per_page: 3)
     end
 
     def new 
         @post = Post.new
-        
     end
 
     def create
@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     end
 
     def my_post
-        @posts = Post.joins(:category).where(user_id: session[:user_id] ).order(:id)
+        @posts = Post.joins(:category).where(user_id: session[:user_id] ).order(:id).paginate(page: params[:page], per_page: 10)
     end
 
     def edit
@@ -34,9 +34,7 @@ class PostsController < ApplicationController
     end
 
     def update
-    
-        @post = Post.find(params[:id])
-       
+        @post = Post.find(params[:id])  
         if  @post.update(post_params)
           redirect_to :my_post
         else
@@ -50,7 +48,20 @@ class PostsController < ApplicationController
         @post = Post.find(params[:id])
         @post.destroy
         redirect_to :my_post
+    end
 
+
+    def search
+        @search = params[:search]
+        @name = @search["name"]
+        @posts = Post.where(["title LIKE ?", "%" + @name +"%"]).paginate(page: params[:page], per_page: 3)
+        render :index
+    end
+
+    def category
+        catId = params[:id]
+        @posts = Post.where(category_id: catId).paginate(page: params[:page], per_page: 3)
+        render :index
     end
 
     private

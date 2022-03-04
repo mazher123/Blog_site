@@ -5,11 +5,9 @@
     <div class ="col-sm-8 ">
         <%= simple_form_for @post, :url => post_path, :method => :put do |f| %>
         <%= f.input :title  %>
-        <%= f.input :content %>
+        <%= f.input :content, as: :rich_text_area %>
         <%= f.input :author  %>
- 
-        <%= f.button :submit, class: 'post-btn-create'  %>
-    
+        <%= f.button :submit, class: 'post-btn-create' %>
         <% end %>
     </div>
      </div>

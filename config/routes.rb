@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get "/login", to: "users#login" ,  as: 'login'
   post "/login", to: "users#loginsubmit" ,as: 'login_submit'
   get '/logout', to: 'users#logout' ,as: 'logout'
+  get '/category/:id', to: "posts#category" , as: 'find_by_cat'
+  get '/search', to: 'posts#search' , as:'search'
   # resources :users , except: [:new]
   resources :categories
 
